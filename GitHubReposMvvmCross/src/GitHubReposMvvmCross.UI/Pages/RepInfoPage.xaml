@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GitHubReposMvvmCross.UI.Pages.RepInfoPage"
+     xmlns:local="clr-namespace:GitHubReposMvvmCross.UI.Pages"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:GitHubReposMvvmCross.Core.ViewModels;assembly=GitHubReposMvvmCross.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="Repository info"    
+    x:TypeArguments="viewModels:RepInfoViewModel">
+    <Grid
+        HeightRequest="60"
+        Padding="16,0"
+        RowSpacing="8">
+        <Grid.RowDefinitions>
+            <RowDefinition 
+                Height="56"/>
+            <RowDefinition 
+                Height="56"/>
+            <RowDefinition 
+                Height="56"/>
+            <RowDefinition 
+                Height="56"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition 
+                Width="Auto"/>
+            <ColumnDefinition 
+                Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Label            
+            Grid.Row="0"
+            Grid.Column="0"
+            FontSize="18"
+            FontAttributes="Bold"
+                                TextColor="{StaticResource PrimaryTextColor}"
+            Text="Имя репозитория:"               
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Start" />
+        <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            FontSize="16"
+                                TextColor="{StaticResource PrimaryTextColor}"
+
+            Text="{Binding Name}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Start" />
+        <Label 
+            Grid.Row="1"
+            Grid.Column="0"
+             FontSize="18"
+            FontAttributes="Bold"
+                                TextColor="{StaticResource PrimaryTextColor}"
+
+            Text="Количесвто зрителей:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Start" />
+
+        <Label 
+            Grid.Row="1"
+            Grid.Column="1"
+                                TextColor="{StaticResource PrimaryTextColor}"
+
+            Text="{Binding Watchers}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Start" />
+        <Label 
+            Grid.Row="2"
+            Grid.Column="0"
+             FontSize="18"
+            FontAttributes="Bold"
+                                TextColor="{StaticResource PrimaryTextColor}"
+
+            Text="Язык программрования:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Start" />
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+                                TextColor="{StaticResource PrimaryTextColor}"
+
+            Text="{Binding Language}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Start" />
+
+        <Label 
+            Grid.Row="3"
+            Grid.Column="0"
+             FontSize="18"
+            FontAttributes="Bold"
+            Text="Описание:"
+                                TextColor="{StaticResource PrimaryTextColor}"
+
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Start" />
+        <Label 
+            Grid.Row="3"
+            Grid.Column="1"
+                                TextColor="{StaticResource PrimaryTextColor}"
+
+            Text="{Binding Description}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Start" />
+    </Grid>
+
+</views:MvxContentPage>

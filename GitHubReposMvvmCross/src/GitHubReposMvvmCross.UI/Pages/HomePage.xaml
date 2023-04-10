@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="GitHubReposMvvmCross.UI.Pages.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GitHubReposMvvmCross.UI.Pages"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:GitHubReposMvvmCross.Core.ViewModels.Home;assembly=GitHubReposMvvmCross.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    Title="GitHub repositories"    
+    x:TypeArguments="viewModels:HomeViewModel" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto"/>
+            <RowDefinition
+                Height="*"/>
+        </Grid.RowDefinitions>
+        <SearchBar 
+            Grid.Row="0"
+            VerticalOptions="Start"
+                Text="{Binding QueryString}"/>
+        <CollectionView  
+            IsVisible="{Binding ReposItemsVisible}"
+            Grid.Row="1"
+            x:Name="listView"
+            BackgroundColor="White"
+            ItemsSource="{Binding ReposItems}"
+            Margin="0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout
+                            Orientation="Vertical"
+                            HeightRequest="60"
+                                    Spacing="0"
+                                    Padding="0,4,0,0"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="FillAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Command="{Binding BindingContext.OpenItemCommand,Source={x:Reference listView}}"
+                                                CommandParameter="{Binding .}" />
+                        </StackLayout.GestureRecognizers>
+                        <Label 
+                                Padding="24,0"
+                                FontSize="18"
+                                HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="CenterAndExpand" 
+                                TextColor="{StaticResource PrimaryTextColor}"
+                                Text="{Binding Name}"/>
+                        <BoxView
+                                BackgroundColor="Black"
+                                HeightRequest="1"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <lottie:AnimationView          
+						x:Name="animationView"
+						RepeatMode="Restart"
+						AutoPlay="True"
+						RepeatCount="100"
+						Margin="0,200,0,0"
+						Speed="2"
+						HeightRequest="100"
+						WidthRequest="100"
+						IsVisible="{Binding ActivityVisible}"
+						Animation="loading.json"
+						AnimationSource="AssetOrBundle"
+						HorizontalOptions="CenterAndExpand"
+						VerticalOptions="CenterAndExpand" />        
+    </Grid>
+    
+</views:MvxContentPage>
